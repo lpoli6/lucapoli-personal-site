@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://lucapoli.com/sitemap-index.xml
