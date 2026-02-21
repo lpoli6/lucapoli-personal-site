@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatDate } from "../../lib/format";
+import { getAllWritingEntries, getEntrySlug } from "../../lib/writing";
+
+const posts = await getAllWritingEntries();
+---
+
+<BaseLayout
+  title="Writing"
+  description="Essays on enterprise AI, technology execution, and leadership."
+  path="/writing"
+>
+  <section class="max-w-prose">
+    <h1 class="font-serif text-[2.3rem] font-semibold leading-tight tracking-tight">Writing</h1>
+    <p class="mt-6 text-[1.08rem] leading-[1.85] text-text">
+      Notes on enterprise AI deployment, operating at scale, and leadership transitions.
+    </p>
+
+    <div class="mt-12 space-y-11">
+      {
+        posts.map((post) => {
+          const slug = getEntrySlug(post);
+
+          return (
+            <article class="space-y-2">
+              <h2 class="text-[1.34rem] font-semibold leading-snug tracking-tight">
+                <a href={`/writing/${slug}`}>{post.data.title}</a>
+              </h2>
+              <p class="text-sm text-muted">{formatDate(post.data.date)}</p>
+              {post.data.description ? <p class="text-[1rem] text-text">{post.data.description}</p> : null}
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>

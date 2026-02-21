@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { EXTERNAL_LINKS, SITE_DESCRIPTION } from "../lib/site";
+---
+
+<BaseLayout path="/" description={SITE_DESCRIPTION}>
+  <section class="max-w-prose">
+    <h1 class="font-serif text-[2rem] font-semibold leading-[1.2] tracking-tight sm:text-[2.35rem]">
+      AI &amp; enterprise technology. Executive Director at CBRE. Former Palantir. Building things that work at scale.
+    </h1>
+
+    <div class="mt-10 space-y-6 text-[1.08rem] leading-[1.85] text-text">
+      <p>
+        I work on deploying AI into large, complex organisations - the hard yards between pilot and production.
+        Previously at Palantir across aerospace and manufacturing. Now leading AI transformation at CBRE.
+      </p>
+      <p>I write occasionally about technology, enterprise AI, and what I am learning.</p>
+    </div>
+
+    <div class="mt-12 space-y-3 text-[1.02rem]">
+      <p><a href="/writing">Writing -></a></p>
+      <p><a href="/now">Now -></a></p>
+      <p>
+        <a href={EXTERNAL_LINKS.linkedin} target="_blank" rel="noreferrer">LinkedIn -></a>
+      </p>
+      <p><a href={EXTERNAL_LINKS.email}>Email -></a></p>
+    </div>
+  </section>
+</BaseLayout>

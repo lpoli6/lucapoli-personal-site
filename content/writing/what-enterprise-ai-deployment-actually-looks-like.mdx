@@ -1,0 +1,37 @@
+---
+title: "What enterprise AI deployment actually looks like"
+date: "2026-01-15"
+description: "Pilots are easy. Production is where it gets hard."
+---
+
+Everyone says they want "AI in production." Almost nobody is honest about what that means.
+
+A pilot is a demo with a deadline. Production is a commitment with consequences. In a pilot, people forgive rough edges because the story is exciting. In production, the same rough edges become incidents, rework, compliance tickets, and loss of trust.
+
+I learned this the hard way as a Forward Deployed Engineer. I worked on deployments where thousands of people needed to use a system every day, not once for a steering committee. At Airbus, for example, we were dealing with a user base above 50,000. In a manufacturing deployment with more than 20,000 users, the technical challenge was only half the job. The other half was getting real operations teams to rely on the system when mistakes had real cost.
+
+The biggest misunderstanding is that scale is mostly a compute problem. It is not. Scale is a behavior problem.
+
+When people ask me what separates pilot from production, I usually list five things.
+
+First: workflow integration beats model quality. If your model is excellent but the tool sits outside existing workflows, adoption will collapse. People will always choose the path of least friction, especially under pressure. The winning systems are rarely the most "advanced"; they are the ones that appear where work already happens.
+
+Second: data contracts matter more than dashboards. Most pilot environments are built on temporary assumptions: one clean sample, one curated table, one heroic analyst. Production systems survive because the upstream data pipeline is governed, monitored, and owned. If nobody owns input quality, your output quality is a coin toss.
+
+Third: exception handling is the product. In demos, we show the happy path. In operations, the unhappy path is where all the value leakage happens. What does the system do when confidence is low, when an upstream source is late, when a human overrides a recommendation, when policy changes in the middle of the quarter? If you cannot answer those questions, you do not have a production system yet.
+
+Fourth: change management is not a communication plan. Sending an all-hands email and doing two training sessions is not transformation. Real change management means redesigning roles, incentives, operating rhythms, and decision rights. It means managers use the new metrics in weekly reviews. It means teams are measured on adoption and outcomes, not on saying they support innovation.
+
+Fifth: executive sponsorship has to cash out as resourcing. Every leader says AI is strategic. The real test is whether they will fund data engineering, product ownership, enablement, and platform reliability for years, not months. If those functions are treated as optional overhead, the pilot will stay a pilot forever.
+
+At CBRE, leading AI business transformation, this is exactly where the work is. The hard part is not proving that AI can do useful things. We passed that line long ago. The hard part is building the internal capability so outcomes are repeatable across operations, geographies, and teams with different incentives. That means platform decisions, governance, capability building, and commercial alignment all moving together.
+
+There is no glamorous way to do this. You need disciplined execution and a high tolerance for ambiguity. You need to make hundreds of small design choices that never show up in keynote slides: who signs off on a model update, what happens when a recommendation is ignored, how fast incidents are triaged, who owns user feedback, what gets measured weekly, what is escalated monthly.
+
+I also think we should retire the language of "AI project." In serious enterprises, AI is becoming part of the operating model. Calling it a project keeps it in temporary mode. Production deployment is the shift from temporary mode to institutional mode.
+
+If this sounds less exciting than model benchmarks, that is because it is. It is also where almost all durable value gets created.
+
+The best teams I have seen stop treating AI as a magic layer on top of broken processes. They treat it as a forcing function to clean up processes, data ownership, and decision discipline. AI then becomes a multiplier, not a patch.
+
+That is what enterprise deployment actually looks like: fewer launch announcements, more boring reliability work, more operational accountability, and more time spent on people than on prompts. It is not glamorous, but it works.
