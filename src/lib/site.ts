@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION =
 export const SITE_OG_IMAGE = "/og-default.png";
 
 export const EXTERNAL_LINKS = {
-  linkedin: "https://www.linkedin.com/in/lucapoli",
+  linkedin: "https://www.linkedin.com/in/luca-poli-uk/",
   email: "mailto:luca@lucapoli.com"
 } as const;
 

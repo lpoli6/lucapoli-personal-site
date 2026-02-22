@@ -20,10 +20,10 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="flex items-start justify-between gap-8">
+<header class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
   <a href={withBasePath("/")} class="text-[1.05rem] font-medium tracking-tight hover:underline">Luca Poli</a>
 
-  <nav aria-label="Main navigation" class="flex items-center gap-6 text-[0.98rem] text-text">
+  <nav aria-label="Main navigation" class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.96rem] text-text sm:gap-6 sm:text-[0.98rem]">
     {
       navItems.map((item) => {
         const active = isActive(item.href);

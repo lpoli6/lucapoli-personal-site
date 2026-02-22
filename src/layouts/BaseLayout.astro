@@ -9,13 +9,28 @@ interface Props {
   title?: string;
   description?: string;
   path?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: "website" | "article";
+  ogImage?: string;
 }
 
-const { title, description = SITE_DESCRIPTION, path = "/" } = Astro.props;
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  path = "/",
+  ogTitle,
+  ogDescription,
+  ogType = "website",
+  ogImage = SITE_OG_IMAGE
+} = Astro.props;
 const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
 const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 const canonicalUrl = toAbsoluteUrl(normalizedPath);
-const ogImageUrl = toAbsoluteUrl(SITE_OG_IMAGE);
+const ogImageUrl = toAbsoluteUrl(ogImage);
+const resolvedOgTitle = ogTitle ?? pageTitle;
+const resolvedOgDescription = ogDescription ?? description;
+const rssFeedUrl = toAbsoluteUrl("/feed.xml");
 ---
 
 <html lang="en">
@@ -30,21 +45,21 @@ const ogImageUrl = toAbsoluteUrl(SITE_OG_IMAGE);
     />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} Writing`} href={rssFeedUrl} />
 
     <link rel="canonical" href={canonicalUrl} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={SITE_NAME} />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
-    <Analytics />
   </head>
 
   <body>
@@ -57,5 +72,6 @@ const ogImageUrl = toAbsoluteUrl(SITE_OG_IMAGE);
         <SiteFooter />
       </div>
     </div>
+    <Analytics />
   </body>
 </html>

@@ -25,7 +25,7 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   font-size: 18px;
-  line-height: 1.75;
+  line-height: 1.65;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -36,6 +36,10 @@ body {
 
 .hero-headline {
   text-wrap: balance;
+}
+
+.writing-article {
+  max-width: 68ch;
 }
 
 .nav-link {
@@ -66,7 +70,7 @@ a:hover {
 
 .prose-content {
   font-size: 1.125rem;
-  line-height: 1.78;
+  line-height: 1.68;
 }
 
 .prose-content h2 {
@@ -101,7 +105,7 @@ a:hover {
 
 .prose-content li {
   margin-top: 0.4rem;
-  line-height: 1.78;
+  line-height: 1.68;
 }
 
 .prose-content blockquote {

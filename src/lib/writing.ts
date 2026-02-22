@@ -12,11 +12,8 @@ export function getEntrySlug(entry: WritingEntry): string {
   return entry.id.replace(/\\/g, "/").replace(/\.mdx?$/, "").replace(/\/index$/, "");
 }
 
-export async function getAllWritingEntries(): Promise<WritingEntry[]> {
-  const entries = await getCollection("writing");
-  const visibleEntries = import.meta.env.PROD ? entries.filter((entry) => !entry.data.draft) : entries;
-
-  return visibleEntries.sort((a, b) => {
+function sortEntries(entries: WritingEntry[]): WritingEntry[] {
+  return entries.sort((a, b) => {
     const dateDifference = b.data.date.getTime() - a.data.date.getTime();
 
     if (dateDifference !== 0) {
@@ -25,4 +22,16 @@ export async function getAllWritingEntries(): Promise<WritingEntry[]> {
 
     return a.id.localeCompare(b.id);
   });
+}
+
+export async function getPublishedWritingEntries(): Promise<WritingEntry[]> {
+  const publishedEntries = await getCollection("writing", ({ data }) => !data.draft);
+  return sortEntries(publishedEntries);
+}
+
+export async function getAllWritingEntries(): Promise<WritingEntry[]> {
+  const entries = await getCollection("writing");
+  const visibleEntries = import.meta.env.PROD ? entries.filter((entry) => !entry.data.draft) : entries;
+
+  return sortEntries(visibleEntries);
 }
