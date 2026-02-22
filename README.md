@@ -53,8 +53,11 @@ Example: `content/writing/my-new-essay.mdx` -> `/writing/my-new-essay`
 ## GitHub Pages Setup
 1. Push this repository to GitHub.
 2. In GitHub repository settings, enable **Pages** with **GitHub Actions** as the source.
-3. Confirm custom domain in Pages settings is `lucapoli.com`.
-4. Ensure DNS points to GitHub Pages for `lucapoli.com`.
+3. Default deploy target is the project URL: `https://lpoli6.github.io/lucapoli-personal-site/`.
+4. Optional custom domain settings:
+   - `PUBLIC_SITE_URL=https://lucapoli.com`
+   - `PUBLIC_BASE_PATH=/`
+   - ensure DNS points to GitHub Pages for `lucapoli.com`.
 
 The repository already includes:
 - `public/CNAME` for custom domain
@@ -63,7 +66,7 @@ The repository already includes:
 ## SEO
 - Canonical and Open Graph metadata are set per page in `BaseLayout.astro`.
 - Sitemap is generated during build via `@astrojs/sitemap`.
-- `public/robots.txt` points crawlers to sitemap.
+- `src/pages/robots.txt.ts` generates `robots.txt` with the correct sitemap URL.
 
 ## Notes
 - No database and no CMS.

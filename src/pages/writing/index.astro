@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatDate } from "../../lib/format";
 import { getAllWritingEntries, getEntrySlug } from "../../lib/writing";
+import { withBasePath } from "../../lib/site";
 
 const posts = await getAllWritingEntries();
 ---
@@ -25,7 +26,7 @@ const posts = await getAllWritingEntries();
           return (
             <article class="space-y-2">
               <h2 class="text-[1.34rem] font-semibold leading-snug tracking-tight">
-                <a href={`/writing/${slug}`}>{post.data.title}</a>
+                <a href={withBasePath(`/writing/${slug}`)}>{post.data.title}</a>
               </h2>
               <p class="text-sm text-muted">{formatDate(post.data.date)}</p>
               {post.data.description ? <p class="text-[1rem] text-text">{post.data.description}</p> : null}

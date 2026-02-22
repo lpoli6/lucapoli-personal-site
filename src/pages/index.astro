@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { EXTERNAL_LINKS, SITE_DESCRIPTION } from "../lib/site";
+import { EXTERNAL_LINKS, SITE_DESCRIPTION, withBasePath } from "../lib/site";
 ---
 
 <BaseLayout path="/" description={SITE_DESCRIPTION}>
@@ -18,8 +18,8 @@ import { EXTERNAL_LINKS, SITE_DESCRIPTION } from "../lib/site";
     </div>
 
     <div class="mt-12 space-y-3 text-[1.02rem]">
-      <p><a href="/writing">Writing -></a></p>
-      <p><a href="/now">Now -></a></p>
+      <p><a href={withBasePath("/writing")}>Writing -></a></p>
+      <p><a href={withBasePath("/now")}>Now -></a></p>
       <p>
         <a href={EXTERNAL_LINKS.linkedin} target="_blank" rel="noreferrer">LinkedIn -></a>
       </p>
