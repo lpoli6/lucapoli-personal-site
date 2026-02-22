@@ -5,7 +5,7 @@ import { EXTERNAL_LINKS, SITE_DESCRIPTION, withBasePath } from "../lib/site";
 
 <BaseLayout path="/" description={SITE_DESCRIPTION}>
   <section class="max-w-prose">
-    <h1 class="font-serif text-[2rem] font-semibold leading-[1.2] tracking-tight sm:text-[2.35rem]">
+    <h1 class="hero-headline font-serif text-[2rem] font-semibold leading-[1.2] tracking-tight sm:text-[2.35rem]">
       AI &amp; enterprise technology. Executive Director at CBRE. Former Palantir. Building things that work at scale.
     </h1>
 
@@ -17,13 +17,14 @@ import { EXTERNAL_LINKS, SITE_DESCRIPTION, withBasePath } from "../lib/site";
       <p>I write occasionally about technology, enterprise AI, and what I am learning.</p>
     </div>
 
-    <div class="mt-12 space-y-3 text-[1.02rem]">
-      <p><a href={withBasePath("/writing")}>Writing -></a></p>
-      <p><a href={withBasePath("/now")}>Now -></a></p>
-      <p>
-        <a href={EXTERNAL_LINKS.linkedin} target="_blank" rel="noreferrer">LinkedIn -></a>
-      </p>
-      <p><a href={EXTERNAL_LINKS.email}>Email -></a></p>
-    </div>
+    <p class="mt-12 text-[0.98rem] font-normal text-muted">
+      <a href={withBasePath("/writing")} class="text-muted">Writing</a>
+      <span aria-hidden="true"> · </span>
+      <a href={withBasePath("/now")} class="text-muted">Now</a>
+      <span aria-hidden="true"> · </span>
+      <a href={EXTERNAL_LINKS.linkedin} target="_blank" rel="noreferrer" class="text-muted">LinkedIn</a>
+      <span aria-hidden="true"> · </span>
+      <a href={EXTERNAL_LINKS.email} class="text-muted">Email</a>
+    </p>
   </section>
 </BaseLayout>

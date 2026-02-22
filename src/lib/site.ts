@@ -1,6 +1,6 @@
 export const SITE_NAME = "Luca Poli";
 export const SITE_DOMAIN = "lucapoli.com";
-const SITE_ORIGIN = (import.meta.env.PUBLIC_SITE_URL ?? "https://lpoli6.github.io").replace(/\/$/, "");
+const SITE_ORIGIN = (import.meta.env.PUBLIC_SITE_URL ?? "https://lucapoli.com").replace(/\/$/, "");
 const baseUrl = import.meta.env.BASE_URL ?? "/";
 
 export const BASE_PATH = baseUrl === "/" ? "" : baseUrl.replace(/\/$/, "");
@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION =
 export const SITE_OG_IMAGE = "/og-default.png";
 
 export const EXTERNAL_LINKS = {
-  linkedin: "https://linkedin.com/in/lucapoli",
+  linkedin: "https://www.linkedin.com/in/lucapoli",
   email: "mailto:luca@lucapoli.com"
 } as const;
 

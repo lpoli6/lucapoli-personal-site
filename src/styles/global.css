@@ -7,6 +7,8 @@
   --text: #1a1a1a;
   --muted: #6b7280;
   --accent: #c4793a;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -21,17 +23,29 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Avenir Next", Avenir, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 17px;
+  font-family: var(--font-body);
+  font-size: 18px;
   line-height: 1.75;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-@media (min-width: 768px) {
-  body {
-    font-size: 18px;
-  }
+.font-serif {
+  font-family: var(--font-heading);
+}
+
+.hero-headline {
+  text-wrap: balance;
+}
+
+.nav-link {
+  text-decoration-color: transparent;
+}
+
+.nav-link-active,
+.nav-link:hover {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
 }
 
 a {
@@ -50,9 +64,14 @@ a:hover {
   background: rgba(196, 121, 58, 0.2);
 }
 
+.prose-content {
+  font-size: 1.125rem;
+  line-height: 1.78;
+}
+
 .prose-content h2 {
   margin-top: 3rem;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1.2;
@@ -61,7 +80,7 @@ a:hover {
 
 .prose-content h3 {
   margin-top: 2.5rem;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 600;
   line-height: 1.25;
@@ -70,8 +89,8 @@ a:hover {
 
 .prose-content p {
   margin-top: 1.5rem;
-  font-size: 1.08rem;
-  line-height: 1.85;
+  font-size: 1em;
+  line-height: inherit;
 }
 
 .prose-content ul,
@@ -82,7 +101,7 @@ a:hover {
 
 .prose-content li {
   margin-top: 0.4rem;
-  line-height: 1.85;
+  line-height: 1.78;
 }
 
 .prose-content blockquote {
