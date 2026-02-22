@@ -1,15 +1,18 @@
 # Luca Poli Personal Website
 
-A minimalist, text-first personal website built with Astro, TypeScript, Tailwind CSS, and MDX. The site is deployed on GitHub Pages with push-to-live CI.
+Minimal text-first personal site built with Astro and deployed on Vercel.
 
 ## Tech Stack
 - Astro (static output)
 - TypeScript
-- Tailwind CSS (handcrafted styles)
-- MDX content collections sourced from `/content/writing`
-- GitHub Pages + GitHub Actions deployment
+- Tailwind CSS with custom global typography/layout styles
+- Markdown/MDX content collections from `/content/writing`
+- `@astrojs/sitemap` for sitemap generation
+- `@astrojs/rss` for `/feed.xml`
+- `@vercel/analytics` for page analytics
+- Vercel deployment from `main`
 
-## Quick Start
+## Local Development
 ```bash
 npm install
 npm run dev
@@ -23,52 +26,48 @@ Open [http://localhost:4321](http://localhost:4321).
 - `npm run build` - production build to `dist/`
 - `npm run preview` - preview built output locally
 
-## Content Workflow
-Writing content lives in:
+## Content Model
+Writing posts live in:
 
-`/content/writing/*.mdx`
+`/content/writing/*.{md,mdx}`
 
-Each essay needs frontmatter:
+Required/optional frontmatter:
 
 ```md
 ---
-title: "Your essay title"
-date: "YYYY-MM-DD"
-description: "Optional short summary"
+title: "Post title"
+date: 2026-02-22
+excerpt: "Short one-line summary"
+description: "Optional fallback summary"
+draft: true
 ---
-
-Essay body in Markdown/MDX.
 ```
 
-Filename becomes the slug.
+Notes:
+- Slug comes from filename (`content/writing/my-post.md` -> `/writing/my-post`).
+- `draft: true` posts are available locally but excluded from production builds.
+- Writing post pages show date + estimated reading time.
 
-Example: `content/writing/my-new-essay.mdx` -> `/writing/my-new-essay`
+## SEO, Feed, and Discovery
+- Every page gets a unique `<title>`, canonical URL, and `<meta name="description">` via `BaseLayout`.
+- Open Graph tags are set globally (`og:title`, `og:description`, `og:url`, `og:type`, `og:image`).
+- Writing post pages use dynamic OG metadata from post title/excerpt and set `og:type="article"`.
+- Sitemap is generated at `/sitemap-index.xml`.
+- RSS feed is generated at `/feed.xml` and includes published writing posts.
+- `src/pages/robots.txt.ts` publishes the sitemap URL.
 
-## Publishing Model (Near Realtime)
-1. Commit your content/code changes.
-2. Push to `main`.
-3. GitHub Actions builds and deploys to GitHub Pages automatically.
-4. Changes are typically live in about 1-3 minutes.
+## Deployment (Vercel)
+- Production deploys run from `main`.
+- Preview deploys are available from pull requests.
+- Primary domain: `https://lucapoli.com`
 
-## GitHub Pages Setup
-1. Push this repository to GitHub.
-2. In GitHub repository settings, enable **Pages** with **GitHub Actions** as the source.
-3. Default deploy target is the project URL: `https://lpoli6.github.io/lucapoli-personal-site/`.
-4. Optional custom domain settings:
-   - `PUBLIC_SITE_URL=https://lucapoli.com`
-   - `PUBLIC_BASE_PATH=/`
-   - ensure DNS points to GitHub Pages for `lucapoli.com`.
+Recommended deploy validation:
+```bash
+npm run check
+npm run build
+```
 
-The repository already includes:
-- `public/CNAME` for custom domain
-- `.github/workflows/deploy-pages.yml` for build/deploy automation
-
-## SEO
-- Canonical and Open Graph metadata are set per page in `BaseLayout.astro`.
-- Sitemap is generated during build via `@astrojs/sitemap`.
-- `src/pages/robots.txt.ts` generates `robots.txt` with the correct sitemap URL.
-
-## Notes
-- No database and no CMS.
-- No server runtime required for content pages.
-- The site is static-first for speed and reliability on GitHub Pages.
+Then verify:
+- `/sitemap-index.xml`
+- `/feed.xml`
+- `/writing` only lists published posts (drafts excluded in production)

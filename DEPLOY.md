@@ -1,21 +1,49 @@
 # Deploy Checklist (Vercel)
 
-## Manual Actions in Vercel Dashboard
+## Vercel Project Settings
 
 1. Open the project in Vercel.
-2. Go to `Settings` -> `Domains`.
-3. Add both domains:
+2. Confirm Framework Preset is Astro.
+3. Confirm production branch is `main`.
+4. Confirm automatic deployments are enabled.
+
+## Domains
+
+1. Go to `Settings` -> `Domains`.
+2. Confirm both domains are connected:
    - `lucapoli.com`
    - `www.lucapoli.com`
-4. Verify the ICANN email sent by Vercel for the purchased domain.
+3. Complete ICANN verification when prompted by Vercel.
 
-## GitHub Integration
+## Build Validation Before Merge
 
-1. Confirm this project is connected to the correct GitHub repository in Vercel.
-2. Confirm auto-deploy is enabled for pushes to the `main` branch.
-3. If not connected, connect the repo in Vercel and enable production deploys from `main`.
+Run locally:
 
-## External Profile Link Note
+```bash
+npm run check
+npm run build
+```
 
-- Primary LinkedIn URL: `https://www.linkedin.com/in/lucapoli`
-- Fallback only if the primary slug returns 404: `https://www.linkedin.com/in/luca-poli`
+Expected generated outputs:
+- `dist/sitemap-index.xml`
+- `dist/feed.xml`
+
+## Post-Deploy Smoke Test
+
+Verify in production:
+- `/`
+- `/writing`
+- `/about`
+- `/now`
+- `/feed.xml`
+- `/sitemap-index.xml`
+- `/robots.txt` includes sitemap URL
+
+Also confirm:
+- Draft writing posts are not listed in production.
+- Vercel Analytics is active site-wide via `BaseLayout.astro`.
+
+## External Links
+
+- LinkedIn: `https://www.linkedin.com/in/luca-poli-uk/`
+- Email: `mailto:luca@lucapoli.com`
