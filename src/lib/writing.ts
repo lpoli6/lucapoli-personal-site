@@ -14,6 +14,15 @@ export function getEntrySlug(entry: WritingEntry): string {
 
 export async function getAllWritingEntries(): Promise<WritingEntry[]> {
   const entries = await getCollection("writing");
+  const visibleEntries = import.meta.env.PROD ? entries.filter((entry) => !entry.data.draft) : entries;
 
-  return entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  return visibleEntries.sort((a, b) => {
+    const dateDifference = b.data.date.getTime() - a.data.date.getTime();
+
+    if (dateDifference !== 0) {
+      return dateDifference;
+    }
+
+    return a.id.localeCompare(b.id);
+  });
 }

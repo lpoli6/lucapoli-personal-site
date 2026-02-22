@@ -21,6 +21,12 @@ const ogImageUrl = toAbsoluteUrl(SITE_OG_IMAGE);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
@@ -42,7 +48,7 @@ const ogImageUrl = toAbsoluteUrl(SITE_OG_IMAGE);
   <body>
     <div class="min-h-screen bg-bg text-text">
       <div class="mx-auto flex min-h-screen w-full max-w-content flex-col px-6 py-8 sm:px-10 sm:py-10">
-        <SiteHeader />
+        <SiteHeader currentPath={normalizedPath} />
         <main class="mt-14 flex-1">
           <slot />
         </main>
