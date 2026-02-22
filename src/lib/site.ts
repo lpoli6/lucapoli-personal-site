@@ -6,7 +6,7 @@ const baseUrl = import.meta.env.BASE_URL ?? "/";
 export const BASE_PATH = baseUrl === "/" ? "" : baseUrl.replace(/\/$/, "");
 export const SITE_URL = `${SITE_ORIGIN}${BASE_PATH}`;
 export const SITE_DESCRIPTION =
-  "AI & enterprise technology. Executive Director at CBRE. Former Palantir. Building things that work at scale.";
+  "AI & Enterprise Technology. Executive Director at CBRE. Former Palantir. Building things that work at scale.";
 export const SITE_OG_IMAGE = "/og-default.png";
 
 export const EXTERNAL_LINKS = {

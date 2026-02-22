@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { formatDate } from "../../lib/format";
-import { getAllWritingEntries, getEntrySlug } from "../../lib/writing";
-import { withBasePath } from "../../lib/site";
+import { getAllWritingEntries } from "../../lib/writing";
 
 const posts = await getAllWritingEntries();
 ---
@@ -21,16 +19,11 @@ const posts = await getAllWritingEntries();
     <div class="mt-12 space-y-11">
       {
         posts.map((post) => {
-          const slug = getEntrySlug(post);
-          const excerpt = post.data.excerpt ?? post.data.description;
-
           return (
             <article class="space-y-2">
-              <h2 class="text-[1.4rem] font-semibold leading-snug tracking-tight text-text">
-                <a href={withBasePath(`/writing/${slug}`)}>{post.data.title}</a>
-              </h2>
-              <p class="text-[0.76rem] font-normal tracking-[0.03em] text-[#8a8a8a]">{formatDate(post.data.date)}</p>
-              {excerpt ? <p class="text-[1rem] leading-relaxed text-[#666666]">{excerpt}</p> : null}
+              <h2 class="text-[1.4rem] font-semibold leading-snug tracking-tight text-text">{post.data.title}</h2>
+              <p class="text-[0.76rem] font-normal tracking-[0.03em] text-[#8a8a8a]">Coming Soon</p>
+              <p class="text-[1rem] leading-relaxed text-[#666666]">I'm taking my time to get these right. Check back soon.</p>
             </article>
           );
         })
