@@ -1,5 +1,6 @@
 ---
 import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_OG_IMAGE, toAbsoluteUrl } from "../lib/site";
@@ -73,5 +74,6 @@ const rssFeedUrl = toAbsoluteUrl("/feed.xml");
       </div>
     </div>
     <Analytics />
+    <SpeedInsights />
   </body>
 </html>
